@@ -7,16 +7,18 @@ var ScrollMagic = require('scrollmagic');
 var controller = new ScrollMagic.Controller();
 
 var scene = new ScrollMagic.Scene({
-        triggerElement: "#trigger1"
-    })
-    .setTween("header h1", 0.5, {
-        backgroundColor: "green"  
-    })
+    triggerElement: "#trigger1"
+})
+        .setTween("header h1", 0.5, {
+            backgroundColor: "green"
+        })
 
-.addTo(controller);
+        .addTo(controller);
 
-//new ScrollMagic.Scene({
-//    triggerElement: "#trigger1"
-//})
-//        .setClassToggle("header h1", "active") // add class toggle
-//        .addTo(controller);
+
+
+$('#nav-icon').click(function () {
+    $(this).toggleClass('open');
+    $('.whiteheader').toggleClass('open');
+    
+});
