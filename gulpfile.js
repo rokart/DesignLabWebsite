@@ -152,6 +152,7 @@ gulp.task('serve', function () {
     gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);
     gulp.watch(routes.templates.html, ['templates']);
     gulp.watch(routes.scripts.js, ['scripts']);
+    gulp.watch(routes.files.images, ['images']);
 });
 
 /* Optimize */

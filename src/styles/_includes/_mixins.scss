@@ -1,11 +1,17 @@
 @mixin bp-mobile {
-  @media (max-width: #{$max-width}) {
-    @content;
-  }
+    @media (max-width: #{$max-width}) {
+        @content;
+    }
 }
 
 @mixin mobile-aspect {
     @media screen and (device-aspect-ratio: 40/71) {
         @content;
     }
+}
+@mixin bgImage($image, $bgpos: center center){
+    background: url( $imgurl + $image);
+    background-repeat: no-repeat;
+    background-position: $bgpos;
+    background-size: cover;
 }
