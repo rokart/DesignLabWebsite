@@ -12,9 +12,11 @@
 ## Install and Use
 
 ### Install
-
+In terminal write this commands:
 ```bash
-npm install -g Test
+git clone https://github.com/rokart/DesignLabWebsite.git
+npm install
+gulp
 ```
 
 # Author 
