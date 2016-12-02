@@ -37,6 +37,33 @@ header {
     }
 }
 
+footer {
+    background-color: $white;
+    .ey_grey_logo{
+        @include bgImage('ey_grey_logo.png');
+        width: 153px;
+        height: 39px;
+        float: left;
+    }
+    .yammer_ico{
+        @include bgImage('yammer_ico.png');
+        width: 34px;
+        height: 34px;
+        display: inline-block;
+    }
+    .wrap{
+         @include clearfix;
+        padding: 20px;
+    }
+    .yammerwrap{
+        float: right;
+        text-align: right;
+    }
+    .footertext{
+
+    }
+}
+
 #nav-icon {
     width: 60px;
     height: 45px;
@@ -91,6 +118,7 @@ header {
         left: 50%;
     }
 }
+
 .logo{
     @include bgImage('logo_grey.png')
     width: 238px;
@@ -101,16 +129,27 @@ header {
 .homepage{
     @include bgImage('mainimage.jpg', top center)
     min-height: 100%;
+    padding: 0;
+}
+.mainimage_grey{
+    @include clearfix;
+    @include bgImage('mainimage_grey.jpg', top center)
+    min-height: 100%;
 }
 .whitelogo{
+    @extend %centerpos;
     @include bgImage('logo_white.png')
-    width: 238px;
-    height: 54px;
+    width: 322px;
+    height: 103px;
+
 }
 .white_down_arrow{
+    @extend %centerpos;
     @include bgImage('white_down_arrow.png')
-    width: 238px;
-    height: 54px;
+    width: 67px;
+    height: 67px;
+    top: auto;
+    bottom: 30px;
 }
 .btn {
     border-radius: .3em;
@@ -147,7 +186,14 @@ header {
         border-color: #f66e88;
     }
 }
-
+.lightgreywrap{
+    background: $lightgrey;
+    p{
+        padding: 50px;
+        margin: 0 auto;
+        width: 130px;
+    }
+}
 
 @include bp-mobile {
     header h1 {

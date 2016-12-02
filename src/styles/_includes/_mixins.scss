@@ -3,7 +3,6 @@
         @content;
     }
 }
-
 @mixin mobile-aspect {
     @media screen and (device-aspect-ratio: 40/71) {
         @content;
@@ -14,4 +13,14 @@
     background-repeat: no-repeat;
     background-position: $bgpos;
     background-size: cover;
+}
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
 }

@@ -22,17 +22,15 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-footer {
-    background-color: $white;
-    padding: 2em;
-}
+
 
 .wrap {
-    max-width: 980px;
+    max-width: 1024px;
     margin: 0 auto;
 }
 
 section {
+    @include clearfix;
     padding: 2em 1.5em 0;
 }
 
@@ -117,4 +115,13 @@ ul {
 li {
     margin-top: 1.25em;
     font-weight: 300;
+}
+
+%centerpos{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto
 }

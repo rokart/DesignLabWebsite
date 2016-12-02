@@ -12,7 +12,7 @@
 ## Install and Use
 
 ### Install
-In terminal write this commands:
+In terminal run this commands:
 ```bash
 git clone https://github.com/rokart/DesignLabWebsite.git
 npm install
