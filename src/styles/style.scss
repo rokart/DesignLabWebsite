@@ -9,6 +9,7 @@ header {
     position: fixed;
     width: 100%;
     text-align: center;
+    z-index: 100;
     nav{
         float: right;
         text-align: center;
@@ -67,8 +68,9 @@ footer {
 .whatwedo{
     @include clearfix;
     @include bgImage('mainimage_grey.jpg', top center)
-color: $white;
+    color: $white;
     background-attachment: fixed;
+    padding-top: 100px;
     h1{        
         padding-left: 40px;
         position: relative;
@@ -107,9 +109,12 @@ color: $white;
 .grid{
     @include clearfix;
     .item{
+        @include grid(1, 5%)
         text-align: center;
-        float: left;
-        @include grid(3, 10%)
+        float: left;        
+        @include break(1000px){
+            @include grid(3, 15%)
+        }
     }
 }
 .gear{
@@ -182,11 +187,3 @@ color: $white;
         display: block;
     }
 }
-
-@media(max-width:843px) {
-    .btn-download {
-        margin-bottom: 1.5em;
-    }
-}
-
-

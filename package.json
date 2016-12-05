@@ -16,7 +16,7 @@
     "optimize": "gulp optimize",
     "deploy": "gulp deploy",
     "test": "mocha"
-  },  
+  },
   "dependencies": {
     "bootstrap": "^3.3.6",
     "browser-sync": "^2.16.1",
@@ -36,11 +36,12 @@
     "gulp-sourcemaps": "^2.1.1",
     "gulp-uglify": "^2.0.0",
     "gulp-uncss": "^1.0.6",
+    "jquery": "^3.1.1",
+    "jquery-ui-browserify": "^1.11.0-pre-seelio",
     "scrollmagic": "^2.0.5"
   },
   "devDependencies": {
     "gulp-browserify": "^0.5.1",
-    "jquery": "^3.1.1",
     "mocha": "*"
   }
 }
