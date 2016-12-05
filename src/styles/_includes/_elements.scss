@@ -1,0 +1,96 @@
+#nav-icon {
+    width: 60px;
+    height: 45px;
+    position: relative;
+    margin: 37px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    float: right;
+    span{
+        display: block;
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        background: $white;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;       
+        transform: rotate(0deg);       
+        transition: .25s ease-in-out; 
+    }
+    span:nth-child(1) {
+        top: 0px;
+    }
+    span:nth-child(2){
+        top: 16px;
+    }
+    span:nth-child(3) {
+        top: 16px;
+    }
+    span:nth-child(4) {
+        top: 32px;
+    }
+    &.open span:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+        background: $grey;
+    }
+    &.open span:nth-child(2) {   
+        transform: rotate(45deg);
+        background: $grey;
+    }
+    &.open span:nth-child(3) {   
+        transform: rotate(-45deg);
+        background: $grey;
+    }
+    &.open span:nth-child(4) {
+        background: $grey;
+        top: 18px;
+        width: 0%;
+        left: 50%;
+    }
+}
+
+.btn {
+    border-radius: .3em;
+    border-style: solid;
+    border-width: 1px;
+    color: $grey;
+    border-color: $grey;
+    display: inline-block;
+    margin-bottom: .5em;
+    padding: .35em .75em;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-transition: color .3s, background-color .3s, border .3s;
+    transition: color .3s, background-color .3s, border .3s;
+    font-size: .85em;
+    margin: .25em;
+
+    &:hover {
+        background-color: $grey;
+        color: $white;
+    }
+}
+
+.btn-background {
+    margin: 10px 0;
+    background-color: $pink;
+    color: $white;
+    padding: .5em;
+    border-radius: .3em;
+    border-color: $pink;
+    &:hover {
+        background-color: #f66e88;
+        color: $white;
+        border-color: #f66e88;
+    }
+}
+.yellowdot{
+    background: $yellow;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+}
