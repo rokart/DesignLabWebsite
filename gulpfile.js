@@ -14,8 +14,8 @@ var gulp = require('gulp'),
         babel = require('gulp-babel'),
         cssimport = require('gulp-cssimport'),
         sourcemaps = require('gulp-sourcemaps'),
-        critical = require('critical').stream,
-        gulpbrowserify = require('gulp-browserify');
+        critical = require('critical').stream;
+//        gulpbrowserify = require('gulp-browserify');
 
 
 /* baseDirs: baseDirs for the project */
@@ -42,6 +42,10 @@ var routes = {
     scripts: {
         base: baseDirs.src + 'scripts/',
         js: [
+            baseDirs.src + 'scripts/vendor/jquery.min.js',
+            baseDirs.src + 'scripts/vendor/jquery-migrate-1.4.1.min.js',
+
+            baseDirs.src + 'scripts/vendor/jquery-ui.js',
             baseDirs.src + 'scripts/vendor/TweenMax.js',
             baseDirs.src + 'scripts/vendor/ScrollMagic.js',
             baseDirs.src + 'scripts/vendor/animation.gsap.js',
@@ -120,9 +124,14 @@ gulp.task('scripts', function () {
                 })
             }))
             .pipe(sourcemaps.init())
+
+            // .pipe(gulpbrowserify())
+            .pipe(babel({
+                presets: [
+                    ["es2015", {"modules": false}]
+                ]
+            }))
             .pipe(concat('script.js'))
-            .pipe(gulpbrowserify())
-            .pipe(babel())
             .pipe(uglify())
             .pipe(sourcemaps.write())
             .pipe(gulp.dest(routes.scripts.jsmin))
@@ -204,13 +213,9 @@ gulp.task('critical', function () {
 });
 
 gulp.task('dev', ['templates', 'styles', 'scripts', 'images', 'serve']);
-
 gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
-
 gulp.task('optimize', ['uncss', 'critical', 'images']);
-
 gulp.task('deploy', ['optimize', ]);
-
 gulp.task('default', function () {
     gulp.start('dev');
 });

@@ -1,29 +1,61 @@
 //'use strict';
 
-//var $ = require('jQuery'); 
-$ = window.jQuery = require("jquery");
-require("jquery-ui-browserify");
-
-
-var ScrollMagic = require('scrollmagic');
-var controller = new ScrollMagic.Controller();
-
-var scene = new ScrollMagic.Scene({
-    triggerElement: "#trigger1"
-})
-        .setTween("header h1", 0.5, {
-            backgroundColor: "green"
-        })
-
-        .addTo(controller);
+//var $ = require('jQuery');
+//window.jQuery = require("jquery");
+//require("jquery-ui-browserify");
+////require("easing-js");
 
 
 
-$('#nav-icon').click(function () {
-    $(this).toggleClass('open');
-    $('.whiteheader').toggleClass('open');
+//var ScrollMagic = require('scrollmagic');
+//var controller = new ScrollMagic.Controller();
+//
+//var scene = new ScrollMagic.Scene({
+//    triggerElement: "#trigger1"
+//})
+//        .setTween("header h1", 0.5, {
+//            backgroundColor: "green"
+//        })
+//
+//        .addTo(controller);
 
-});
+
+class animateMenu {
+    constructor(options) {
+        this.options = $.extend({}, animateMenu.defaults, options);
+        this.Container = $(this.options.Container);
+        this.whiteheader = this.Container.find('.whiteheader');
+        this.navIcon = $(this.options.navIcon);
+        this.click.call(this);
+    }
+    click() {
+        this.navIcon.on('click', () => {
+            this.navIcon.toggleClass('open');
+            this.whiteheader.toggleClass('open');
+        });
+    }
+}
+
+//function animateMenu(options) {
+//    this.options = $.extend({}, animateMenu.defaults, options);
+//    this.Container = $(this.options.Container);
+//    this.whiteheader = this.Container.find('.whiteheader');
+//    this.navIcon = $(this.options.navIcon);
+//    this.events.click.call(this);
+//}
+//animateMenu.prototype.events = {
+//    click: function () {
+//        this.navIcon.on('click', () => {
+//            this.navIcon.toggleClass('open');
+//            this.whiteheader.toggleClass('open');
+//        });
+//    }
+//};
+animateMenu.defaults = {
+    Container: 'header',
+    navIcon: '#nav-icon'
+};
+new animateMenu();
 
 function getPageScroll() {
     var yScroll;
@@ -36,7 +68,7 @@ function getPageScroll() {
 }
 
 //home page first slide scroll animation
-pageheight = $(window).height();
+var pageheight = $(window).height();
 $(window).on("load resize", function () {
     pageheight = $(this).height();
 });
@@ -46,7 +78,6 @@ $(window).bind(mousewheelevt, function (e) {
     var evt = window.event || e;
     evt = evt.originalEvent ? evt.originalEvent : evt;
     var delta = evt.detail ? evt.detail * (-40) : evt.wheelDelta;
-
     if (delta > 0 && getPageScroll() < pageheight + 120) {
         if (body.is(':animated')) {
             return false;
@@ -65,8 +96,6 @@ $(window).bind(mousewheelevt, function (e) {
         }
     }
 });
-
-
 //home page down arrow click event and loop animation    
 $(".white_down_arrow").on("click", function () {
     body.stop(true, false).animate({
