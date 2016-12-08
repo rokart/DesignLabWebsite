@@ -76,11 +76,11 @@ var routes = {
 
 // Templating
 
-gulp.task('templates', function () {
+gulp.task('templates', function (done) {
     return gulp.src(routes.templates.html)
             .pipe(minifyHTML({collapseWhitespace: true}))
-            .pipe(browserSync.stream())
             .pipe(gulp.dest(routes.files.html))
+            .pipe(browserSync.stream())
             .pipe(notify({
                 title: 'HTML minified succesfully!',
                 message: 'templates task completed.'
@@ -155,13 +155,16 @@ gulp.task('images', function () {
 
 gulp.task('serve', function () {
     browserSync.init({
-        server: './dist/'
+        server: './dist'
     });
 
     gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);
+
     gulp.watch(routes.templates.html, ['templates']);
     gulp.watch(routes.scripts.js, ['scripts']);
     gulp.watch(routes.files.images, ['images']);
+    gulp.watch(routes.files.htmlFiles).on('change', browserSync.reload);
+
 });
 
 /* Optimize */

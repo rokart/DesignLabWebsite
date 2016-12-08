@@ -26,35 +26,99 @@ class animateMenu {
         this.Container = $(this.options.Container);
         this.whiteheader = this.Container.find('.whiteheader');
         this.navIcon = $(this.options.navIcon);
+        this.arrow = $(this.options.arrow);
+        this.body = $('html, body');
+        this.window = $(window);
+        this.pageheight = this.window.height();
+        this.mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+        this.loadresize.call(this);
         this.click.call(this);
+    }
+    loadresize() {
+        this.window.on("load resize", () => {
+            this.pageheight = this.window.height();
+            this.animatepage.call(this);
+            this.scaleVideo.call(this);
+        });
+    }
+    scaleVideo() {
+        var $video = $('#full-video'),
+                $videoWrapper = $video.parent();
+        var isWider = ($video.width() > $videoWrapper.width()) ? true : false,
+                isTaller = ($video.height() > this.pageheight) ? true : false,
+                widthDifference = $video.width() - $videoWrapper.width(),
+                heightDifference = $video.height() - $videoWrapper.height();
+
+        (isWider) ? $video.css('left', -parseInt(widthDifference / 2)) : $video.css('left', '0');
+        (isTaller) ? $video.css('top', -parseInt(heightDifference / 2)) : $video.css('top', '0');
     }
     click() {
         this.navIcon.on('click', () => {
-            this.navIcon.toggleClass('open');
-            this.whiteheader.toggleClass('open');
+            this.openMenu.call(this);
+        });
+        this.arrow.on("click", () => {
+            this.body.stop(true, false).animate({
+                scrollTop: this.pageheight - 120
+            }, 600, "easeOutCubic");
+            if (!this.navIcon.hasClass('open')) {
+                this.openMenu.call(this);
+            }
+        });
+    }
+    openMenu() {
+        this.navIcon.toggleClass('open');
+        this.whiteheader.toggleClass('open');
+    }
+
+    animatepage() {
+        this.window.bind(this.mousewheelevt, (e) => {
+            var evt = this.window.event || e;
+            evt = evt.originalEvent ? evt.originalEvent : evt;
+            var delta = evt.detail ? evt.detail * (-40) : evt.wheelDelta;
+            if (delta > 0 && getPageScroll() < this.pageheight + 120) {
+                if (this.body.is(':animated')) {
+                    return false;
+                } else {
+                    if (this.body.hasClass('homepage')) {
+                        if (this.navIcon.hasClass('open')) {
+                            this.openMenu.call(this);
+                        }
+                        this.body.stop(true, false).animate({
+                            scrollTop: 0
+                        }, 600, "easeOutCubic");
+                    }
+                }
+            } else if (getPageScroll() > -1 && getPageScroll() < this.pageheight - 120) {
+                if (this.body.is(':animated')) {
+                    return false;
+                } else {
+                    if (!this.navIcon.hasClass('open')) {
+                        this.openMenu.call(this);
+                    }
+                    if (this.body.hasClass('homepage')) {
+                        this.body.stop(true, false).animate({
+                            scrollTop: this.pageheight - 120
+                        }, 600, "easeOutCubic");
+                    }
+                }
+            }
+            if (!this.body.hasClass('homepage')) {
+                if (getPageScroll() === 0) {
+                    if (this.navIcon.hasClass('open')) {
+                        this.openMenu.call(this);
+                    }
+                }
+            }
         });
     }
 }
-
-//function animateMenu(options) {
-//    this.options = $.extend({}, animateMenu.defaults, options);
-//    this.Container = $(this.options.Container);
-//    this.whiteheader = this.Container.find('.whiteheader');
-//    this.navIcon = $(this.options.navIcon);
-//    this.events.click.call(this);
-//}
-//animateMenu.prototype.events = {
-//    click: function () {
-//        this.navIcon.on('click', () => {
-//            this.navIcon.toggleClass('open');
-//            this.whiteheader.toggleClass('open');
-//        });
-//    }
-//};
 animateMenu.defaults = {
     Container: 'header',
-    navIcon: '#nav-icon'
+    navIcon: '#nav-icon',
+    arrow: '.white_down_arrow'
 };
+
 new animateMenu();
 
 function getPageScroll() {
@@ -67,41 +131,8 @@ function getPageScroll() {
     return yScroll;
 }
 
-//home page first slide scroll animation
-var pageheight = $(window).height();
-$(window).on("load resize", function () {
-    pageheight = $(this).height();
-});
-var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
-var body = $('html, body');
-$(window).bind(mousewheelevt, function (e) {
-    var evt = window.event || e;
-    evt = evt.originalEvent ? evt.originalEvent : evt;
-    var delta = evt.detail ? evt.detail * (-40) : evt.wheelDelta;
-    if (delta > 0 && getPageScroll() < pageheight + 120) {
-        if (body.is(':animated')) {
-            return false;
-        } else {
-            body.stop(true, false).animate({
-                scrollTop: 0
-            }, 600, "easeOutCubic");
-        }
-    } else if (getPageScroll() > -1 && getPageScroll() < pageheight) {
-        if (body.is(':animated')) {
-            return false;
-        } else {
-            body.stop(true, false).animate({
-                scrollTop: pageheight
-            }, 600, "easeOutCubic");
-        }
-    }
-});
-//home page down arrow click event and loop animation    
-$(".white_down_arrow").on("click", function () {
-    body.stop(true, false).animate({
-        scrollTop: pageheight
-    }, 600, "easeOutCubic");
-});
 (function loop() {
     $('.white_down_arrow').delay(500).fadeTo(1000, 0.2).fadeTo(1000, 1, loop);
 })();
+
+
