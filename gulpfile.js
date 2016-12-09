@@ -38,7 +38,8 @@ var routes = {
 
     templates: {
         html: baseDirs.src + 'templates/*.html',
-        htmlincludes: baseDirs.src + 'templates/_includes/'
+        htmlincludes: baseDirs.src + 'templates/_includes/',
+        allhtml: baseDirs.src + 'templates/**/*.html'
     },
 
     scripts: {
@@ -166,7 +167,7 @@ gulp.task('serve', function () {
 
     gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);
 
-    gulp.watch(routes.templates.html, ['templates']);
+    gulp.watch(routes.templates.allhtml, ['templates']);
     gulp.watch(routes.scripts.js, ['scripts']);
     gulp.watch(routes.files.images, ['images']);
     gulp.watch(routes.files.htmlFiles).on('change', browserSync.reload);
@@ -224,7 +225,7 @@ gulp.task('critical', function () {
 gulp.task('dev', ['templates', 'styles', 'scripts', 'images', 'serve']);
 gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 gulp.task('optimize', ['uncss', 'critical', 'images']);
-gulp.task('deploy', ['optimize', ]);
+gulp.task('deploy', ['optimize']);
 gulp.task('default', function () {
     gulp.start('dev');
 });

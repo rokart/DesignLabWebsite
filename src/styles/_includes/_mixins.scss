@@ -15,12 +15,12 @@
     background-size: cover;
 }
 @mixin grid ($columns, $margin){
-    width: ((100% - (($columns - 1) * $margin)) / $columns );
+    width: ((100% - (($columns - 1) * $margin))/$columns);
     &:nth-child(n){
         margin-right: $margin;
         margin-bottom: $margin;
     }
-    &:nth-child(#{$columns}){
+    &:nth-child(#{$columns}n){
         margin-right: 0;
         margin-bottom: $margin;
     }

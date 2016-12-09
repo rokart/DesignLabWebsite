@@ -28,6 +28,7 @@ class animateMenu {
         this.navIcon = $(this.options.navIcon);
         this.arrow = $(this.options.arrow);
         this.body = $('html, body');
+        this.main = this.body.find('main');
         this.window = $(window);
         this.pageheight = this.window.height();
         this.mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
@@ -80,7 +81,7 @@ class animateMenu {
                 if (this.body.is(':animated')) {
                     return false;
                 } else {
-                    if (this.body.hasClass('homepage')) {
+                    if (this.main.hasClass('homepage')) {
                         if (this.navIcon.hasClass('open')) {
                             this.openMenu.call(this);
                         }
@@ -96,14 +97,14 @@ class animateMenu {
                     if (!this.navIcon.hasClass('open')) {
                         this.openMenu.call(this);
                     }
-                    if (this.body.hasClass('homepage')) {
+                    if (this.main.hasClass('homepage')) {
                         this.body.stop(true, false).animate({
                             scrollTop: this.pageheight - 120
                         }, 600, "easeOutCubic");
                     }
                 }
             }
-            if (!this.body.hasClass('homepage')) {
+            if (!this.main.hasClass('homepage')) {
                 if (getPageScroll() === 0) {
                     if (this.navIcon.hasClass('open')) {
                         this.openMenu.call(this);
