@@ -107,7 +107,6 @@ footer {
     }
 }
 .services {
-
     .mainpage{
         @extend .whatwedo;
         @include bgImage('mainimage_lightgrey.jpg', top center)
@@ -119,22 +118,26 @@ footer {
             color: $darkgrey;
         }
         .wrap{
-            padding-top: 100px;
+            padding-top: 150px;
         }
     }
     .learning{
         @include bgImage('brain_bg.png', center -70px);
         background-color: $lightgraybg;
         background-attachment: fixed;
-        background-size: contain;
     }
     .avProduction{
-         @include bgImage('AV_bg.png', center -70px);
+        @include bgImage('AV_bg.png', center -70px);
         background-attachment: fixed;
-        background-size: contain;
     }
     .development{
+        @include bgImage('link_bg.png', center 0px);
         background-color: $lightgraybg;
+        background-attachment: fixed;
+    }
+    .servisesitems{
+        @include grid(2, 5%)
+        float: left;  
     }
 
 }

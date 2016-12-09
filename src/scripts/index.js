@@ -75,7 +75,7 @@ class animateMenu {
         this.window.bind(this.mousewheelevt, (e) => {
             var evt = this.window.event || e;
             evt = evt.originalEvent ? evt.originalEvent : evt;
-            var delta = evt.detail ? evt.detail * (-40) : evt.wheelDelta;
+            const delta = evt.detail ? evt.detail * (-40) : evt.wheelDelta;
             if (delta > 0 && getPageScroll() < this.pageheight + 120) {
                 if (this.body.is(':animated')) {
                     return false;

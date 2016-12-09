@@ -4,11 +4,14 @@ html, body {
     font-size: 18px;
     font-family: 'Open Sans', Helvetica;
     height: 100%;
+    color: $grey;
 }
 a {
     text-decoration: none;
 }
-
+b{
+    font-weight: 600;
+}
 header,footer {
     text-align: center;
 }
@@ -57,9 +60,6 @@ blockquote {
     border-left: 5px solid $pink;
 }
 
-b {
-    color: #24334a;  
-}
 
 .section-title {
     font-weight: 700;
@@ -68,7 +68,6 @@ b {
 
 p {
     font-weight: 300;
-    color: $darkgrey
 }
 
 p a,

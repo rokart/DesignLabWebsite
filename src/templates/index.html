@@ -1,46 +1,12 @@
-<!doctype html>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <title>Design Lab</title>
-        <meta charset="utf-8">
-        <meta name="description" content="Design Lab">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <base href="./assets/">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-    </head>
-
+    @@include('./head.html')
     <body class="homepage">
-        <header>
-            <div class="whiteheader">
-                <div class="logo"></div>
-                <nav>
-                    <ul>
-                        <li><a class="btn" href="../">HOME <span class="smallyellowdot"></a> </li>
-                        <li><a class="btn" href="../our_work.html">OUR WORK <span class="smallyellowdot"></a> </li>
-                        <li><a class="btn" href="../about.html">ABOUT <span class="smallyellowdot"></a> </li>
-                        <li><a class="btn" href="../services.html">SERVICES <span class="smallyellowdot"></a> </li>
-                        <li><a class="btn" href="../contact.html">CONTACT <span class="smallyellowdot"></a> </li>
-                    </ul>
-                </nav>
-            </div>
-            <div id="nav-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </header>
+        @@include('./header.html')
         <main>
             <section class="homepage">
                 <div class="full-video-wrapper">
                     <video id="full-video" muted preload autoplay loop>
                         <source src="files/Sharepoint_Animation_1600x1050.mp4 " type="video/mp4">
-                         fallback image 
+                        fallback image 
                         <img src="files/img/mainimage.jpg" class="video-player--fallback-image" />
                     </video>
                 </div>
@@ -70,22 +36,4 @@
 
                 </div>
             </section>
-            <footer>
-                <div class="lightgreywrap">
-                    <p>13th Floor, 25 Churchill Place, London, E14 5EY, United Kingdom</p>
-                </div>
-                <div class="wrap">
-                    <div class="ey_grey_logo"></div>
-                    <div class="yammerwrap">
-                        <div class="yammer_ico"></div>
-                        <div class="footertext">Site and content © DesignLab EY</div>
-                    </div>
-                </div>
-            </footer>
-        </main>
-
-    </body>
-    <script src="js/script.js" type="text/javascript"></script>
-
-</html>
-
+            @@include('./footer.html')

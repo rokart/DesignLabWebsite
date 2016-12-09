@@ -14,6 +14,7 @@ var gulp = require('gulp'),
         babel = require('gulp-babel'),
         cssimport = require('gulp-cssimport'),
         sourcemaps = require('gulp-sourcemaps'),
+        fileinclude = require('gulp-file-include'),
         critical = require('critical').stream;
 //        gulpbrowserify = require('gulp-browserify');
 
@@ -36,7 +37,8 @@ var routes = {
     },
 
     templates: {
-        html: baseDirs.src + 'templates/*.html'
+        html: baseDirs.src + 'templates/*.html',
+        htmlincludes: baseDirs.src + 'templates/_includes/'
     },
 
     scripts: {
@@ -78,6 +80,10 @@ var routes = {
 
 gulp.task('templates', function (done) {
     return gulp.src(routes.templates.html)
+            .pipe(fileinclude({
+                prefix: '@@',
+                basepath: routes.templates.htmlincludes
+            }))
             .pipe(minifyHTML({collapseWhitespace: true}))
             .pipe(gulp.dest(routes.files.html))
             .pipe(browserSync.stream())
