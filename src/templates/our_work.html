@@ -1,8 +1,59 @@
-@@include('./header.html')
-<main class="our_work">
-    <section>
-        <div class="wrap">
+@@include('./head.html')
+<body class="our_work">
+    @@include('./header.html')
+    <main>
+        <section class="mainpage">
+            <div class="wrap">
+                <h1>Our Work</h1>
 
-        </div>
-    </section>
-    @@include('./footer.html')
+                <div class="button-group filters-button-group">
+                    <button class="button is-checked" data-filter="*">show all <span class="smallyellowdot"></button>
+                    <button class="button" data-filter=".eLearning">eLearning <span class="smallyellowdot"></button>
+                    <button class="button" data-filter=".Filming">Filming <span class="smallyellowdot"></button>
+                    <button class="button" data-filter=".Animation, .Filming">Animation <span class="smallyellowdot"></button>
+                    <button class="button" data-filter=".Gamification">Gamification <span class="smallyellowdot"></button>
+                    <button class="button" data-filter=".VILT">VILT <span class="smallyellowdot"></button>
+                    <button class="button" data-filter=".development">Web development <span class="smallyellowdot"></button>
+                </div>
+
+
+                <div class="grid">
+                    <div class="element-item eLearning">
+                        <img src="css/work1.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item eLearning">
+                        <img src="css/work2.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item development">
+                        <img src="css/work3.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item development">
+                        <img src="css/work4.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item Animation">
+                        <img src="css/work5.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item Gamification">
+                        <img src="css/work6.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item VILT">
+                        <img src="css/work1.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+                    <div class="element-item Filming">
+                        <img src="css/work3.jpg" alt="" />
+                        <div class="description">Description Description</div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+        @@include('./footer.html')

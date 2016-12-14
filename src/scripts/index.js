@@ -28,11 +28,10 @@ class animateMenu {
         this.navIcon = $(this.options.navIcon);
         this.arrow = $(this.options.arrow);
         this.body = $('html, body');
-        this.main = this.body.find('main');
+        this.main = this.body;
         this.window = $(window);
         this.pageheight = this.window.height();
         this.mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
-
         this.loadresize.call(this);
         this.click.call(this);
     }
@@ -50,7 +49,6 @@ class animateMenu {
                 isTaller = ($video.height() > this.pageheight) ? true : false,
                 widthDifference = $video.width() - $videoWrapper.width(),
                 heightDifference = $video.height() - $videoWrapper.height();
-
         (isWider) ? $video.css('left', -parseInt(widthDifference / 2)) : $video.css('left', '0');
         (isTaller) ? $video.css('top', -parseInt(heightDifference / 2)) : $video.css('top', '0');
     }
@@ -119,9 +117,7 @@ animateMenu.defaults = {
     navIcon: '#nav-icon',
     arrow: '.white_down_arrow'
 };
-
 new animateMenu();
-
 function getPageScroll() {
     var yScroll;
     if (document.documentElement && document.documentElement.scrollTop) {
@@ -132,8 +128,74 @@ function getPageScroll() {
     return yScroll;
 }
 
+
 (function loop() {
     $('.white_down_arrow').delay(500).fadeTo(1000, 0.2).fadeTo(1000, 1, loop);
 })();
 
+class person {
+    constructor(options) {
+        this.wrap = options.wrap;
+        this.items = this.wrap.find('.teamitem');
 
+        this.click.call(this);
+    }
+    animate() {
+        this.items.each(function () {
+            console.log(this)
+        });
+    }
+    click() {
+        this.items.on('click', function () {
+            var tl = new TimelineLite();
+            var windowwidth = $(window).width() / 2;
+            var windowheight = $(window).height() / 2;
+            var itemleftpos = $(this).offset();
+
+            var left = windowwidth - (itemleftpos.left) - 87.5;
+            var right = windowheight - itemleftpos.top - 87.5 + getPageScroll();
+            var item = $(this);
+
+            tl.from(item, 0.4, {autoAlpha: 0, ease: Back.easeOut})
+                    .set(item, {css: {zIndex: 100}})
+                    .to(item, 0.4, {x: left, y: right, ease: Back.easeInOut, onComplete: togleclass})
+                    .set(item, {className: "+=show-details"})
+                    .to(item.find('.hiddenbubble'), 0.6, {scale: 20, ease: Back.easeOut})
+
+//            TweenMax.staggerTo($(this), 2, {scale: 1.1, delay: 0.1, ease: Elastic.easeOut, force3D: true}, 0.2);
+
+            function togleclass() {
+//                item.toggleClass('show-details');              
+            }
+
+        });
+
+    }
+}
+
+// init Isotope
+var $grid = $('.grid').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'fitRows'
+});
+
+// bind filter button click
+$('.filters-button-group').on('click', 'button', function () {
+    var filterValue = $(this).attr('data-filter');   
+    $grid.isotope({filter: filterValue});
+});
+
+// change is-checked class on buttons
+$('.button-group').each(function (i, buttonGroup) {
+    var $buttonGroup = $(buttonGroup);
+    $buttonGroup.on('click', 'button', function () {
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        $(this).addClass('is-checked');
+    });
+});
+
+
+//var style = {
+//    boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
+//    transform: `translate3d(0, ${y}px, 0) scale(${scale})`
+//};

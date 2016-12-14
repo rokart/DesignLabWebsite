@@ -18,6 +18,7 @@
         left: 0;       
         transform: rotate(0deg);       
         transition: .25s ease-in-out; 
+        box-shadow: 1px 1px 2px $lightgrey;
     }
     span:nth-child(1) {
         top: 0px;
@@ -53,12 +54,10 @@
     }
 }
 
-.btn {
-    border-radius: .3em;
-    border-style: solid;
-    border-width: 1px;
+.btn {  
+    /*    border-bottom: 4px solid $grey;*/
     color: $grey;
-    border-color: $grey;
+    border-radius: 5px;
     display: inline-block;
     margin-bottom: .5em;
     padding: .35em .75em;
@@ -168,17 +167,96 @@
     border-radius: 50%;
     display: inline-block;
     background: $yellow;
+    position: relative;
 
     img{
         padding: 15px 42px;
     }
 }
+.show-details{
+    .bubble{
+        overflow: visible;
+    }
+    /*    .hiddenbubble{
+            opacity: 1;
+            transform: scale(20);
+        }*/
+}
+
+.hiddenbubble{
+    /*    transform: scale(1);
+        transition: all .2s ease-in-out; */
+
+    width: 175px;
+    height:  175px;
+    border-radius: 50%;
+    background: $yellow;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*    opacity: 0;*/
+}
+
 .teamitemwrap{
-/*    text-align: center;*/
+    /*    text-align: center;*/
     @include clearfix;
     .teamitem{
         @include grid(4, 5%);
         display: inline-block;
         text-align: center;
     }
+}
+#map {
+    height: 600px;
+    width: 100%;
+}
+.white_down_arrow{
+    @extend %centerpos;
+    @include bgImage('white_down_arrow.png')
+    width: 67px;
+    height: 67px;
+    top: auto;
+    bottom: 30px;
+    cursor: pointer;
+}
+.playicon{
+    @include bgImage('playicon.png')
+    width: 143px;
+    height: 143px;
+    margin: 100px auto;
+}
+
+.gear{
+    @include bgImage('gear.png')
+    width: 93px;
+    height: 93px;
+    display: inline-block;
+}
+.brain{
+    @extend .gear;
+    @include bgImage('brain.png')
+}
+.brain{
+    @extend .gear;
+    @include bgImage('brain.png')
+}
+.camera{
+    @extend .gear;
+    @include bgImage('camera.png')
+}
+
+.logo{
+    @include bgImage('logo_grey.png')
+    width: 238px;
+    height: 54px;
+    float: left;
+    margin: 33px;
+}
+.whitelogo{
+    @extend %centerpos;
+    @include bgImage('logo_white.png')
+    width: 322px;
+    height: 103px;
+
 }

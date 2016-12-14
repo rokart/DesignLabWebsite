@@ -15,6 +15,7 @@ var gulp = require('gulp'),
         cssimport = require('gulp-cssimport'),
         sourcemaps = require('gulp-sourcemaps'),
         fileinclude = require('gulp-file-include'),
+        inline_base64 = require('gulp-inline-base64'),
         critical = require('critical').stream;
 //        gulpbrowserify = require('gulp-browserify');
 
@@ -53,6 +54,7 @@ var routes = {
             baseDirs.src + 'scripts/vendor/ScrollMagic.js',
             baseDirs.src + 'scripts/vendor/animation.gsap.js',
             baseDirs.src + 'scripts/vendor/debug.addIndicators.js',
+            baseDirs.src + 'scripts/vendor/isotope.pkgd.min.js',            
             baseDirs.src + 'scripts/index.js',
             baseDirs.src + 'scripts/main.js'
         ],
@@ -62,7 +64,8 @@ var routes = {
     files: {
         html: 'dist/',
         images: baseDirs.src + 'images/*',
-        imgmin: baseDirs.assets + 'files/img/',
+        baseimages: baseDirs.src + 'images',
+        imgmin: baseDirs.assets + 'css/',
         cssFiles: baseDirs.assets + 'css/*.css',
         htmlFiles: baseDirs.dist + '*.html',
         styleCss: baseDirs.assets + 'css/style.css'
@@ -112,6 +115,11 @@ gulp.task('styles', function () {
             .pipe(sourcemaps.write())
             .pipe(cssimport({}))
             .pipe(rename('style.css'))
+            .pipe(inline_base64({
+                baseDir: "dist/assets/css/",
+                maxSize: 14 * 1024,
+                debug: true
+            }))
             .pipe(gulp.dest(routes.styles.css))
             .pipe(browserSync.stream())
             .pipe(notify({
@@ -222,7 +230,7 @@ gulp.task('critical', function () {
             }));
 });
 
-gulp.task('dev', ['templates', 'styles', 'scripts', 'images', 'serve']);
+gulp.task('dev', ['templates', 'images', 'styles', 'scripts', 'serve']);
 gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 gulp.task('deploy', ['optimize']);
