@@ -54,7 +54,9 @@ var routes = {
             baseDirs.src + 'scripts/vendor/ScrollMagic.js',
             baseDirs.src + 'scripts/vendor/animation.gsap.js',
             baseDirs.src + 'scripts/vendor/debug.addIndicators.js',
-            baseDirs.src + 'scripts/vendor/isotope.pkgd.min.js',            
+            baseDirs.src + 'scripts/vendor/isotope.pkgd.min.js',
+            baseDirs.src + 'scripts/vendor/imagesloaded.pkgd.min.js',
+
             baseDirs.src + 'scripts/index.js',
             baseDirs.src + 'scripts/main.js'
         ],

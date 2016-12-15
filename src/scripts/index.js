@@ -179,9 +179,15 @@ var $grid = $('.grid').isotope({
     layoutMode: 'fitRows'
 });
 
+
+// layout Isotope after each image loads
+$grid.imagesLoaded().progress(function () {
+    $grid.isotope('layout');
+});
+
 // bind filter button click
 $('.filters-button-group').on('click', 'button', function () {
-    var filterValue = $(this).attr('data-filter');   
+    var filterValue = $(this).attr('data-filter');
     $grid.isotope({filter: filterValue});
 });
 
