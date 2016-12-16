@@ -73,6 +73,23 @@
         color: $white;
     }
 }
+.btn2{
+    transition: .3s ease-in-out; 
+    display: inline-block;
+    padding: 10px 35px;
+    margin-top: 15px;
+    border: none;
+    border: 2px solid $yellow;
+    font-size: 16px;    
+    cursor: pointer;
+    background: none;
+    color: $white;
+    transform: translate(0, 300px); 
+    &:hover {
+        background: $yellow;
+        color: $grey;
+    }
+}
 
 .btn-background {
     margin: 10px 0;
@@ -259,4 +276,58 @@
     width: 322px;
     height: 103px;
 
+}
+%centerwrap{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.smallfont{
+    font-size: .7em;
+}
+.slick-track{
+    overflow: hidden;
+}
+.time-ico{
+    @include bgImage('time-ico.png');
+    width: 94px;
+    height: 94px;
+}
+.cost-ico{
+    @include bgImage('cost-ico.png');
+    width: 94px;
+    height: 94px;
+    display: inline-block;
+}
+
+.time-ico{
+    @include bgImage('time-ico.png');
+    width: 94px;
+    height: 94px;
+    display: inline-block;
+}
+.resourses-ico{
+    @include bgImage('resourses-ico.png');
+    width: 94px;
+    height: 94px;
+    display: inline-block;
+}
+
+.Rapid_DesignLab{
+    .header{
+        @include bgImage('1_Rapid_DesignLab-overview.jpg')
+    }
+}
+.eLearning_Co_exist{    
+    .header{
+        @include bgImage('3_eLearning_Co_exist.jpg')
+    }
+}
+.eLearning_EY_Libuary{
+    .header{
+        @include bgImage('2_eLearning_EY_Libuary.jpg')
+    }
 }

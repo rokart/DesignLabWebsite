@@ -48,7 +48,6 @@ var routes = {
         js: [
             baseDirs.src + 'scripts/vendor/jquery.min.js',
             baseDirs.src + 'scripts/vendor/jquery-migrate-1.4.1.min.js',
-
             baseDirs.src + 'scripts/vendor/jquery-ui.js',
             baseDirs.src + 'scripts/vendor/TweenMax.js',
             baseDirs.src + 'scripts/vendor/ScrollMagic.js',
@@ -56,6 +55,7 @@ var routes = {
             baseDirs.src + 'scripts/vendor/debug.addIndicators.js',
             baseDirs.src + 'scripts/vendor/isotope.pkgd.min.js',
             baseDirs.src + 'scripts/vendor/imagesloaded.pkgd.min.js',
+            baseDirs.src + 'scripts/vendor/slick.js',
 
             baseDirs.src + 'scripts/index.js',
             baseDirs.src + 'scripts/main.js'

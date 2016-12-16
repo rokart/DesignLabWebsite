@@ -201,6 +201,21 @@ $('.button-group').each(function (i, buttonGroup) {
 });
 
 
+var integer = window.location.hash.match(/\d+/) | 0;
+
+$('.elearningwrap').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    lazyLoad: 'ondemand'
+});
+
+setTimeout(function () { 
+    $('.elearningwrap').slick('slickGoTo', integer, true);
+}, 1000);
+
 //var style = {
 //    boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
 //    transform: `translate3d(0, ${y}px, 0) scale(${scale})`
