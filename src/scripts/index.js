@@ -211,6 +211,14 @@ $('.elearningwrap').slick({
     adaptiveHeight: true,
     lazyLoad: 'ondemand'
 });
+$('.productcategories').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    autoplay: true,
+});
+
 
 setTimeout(function () { 
     $('.elearningwrap').slick('slickGoTo', integer, true);

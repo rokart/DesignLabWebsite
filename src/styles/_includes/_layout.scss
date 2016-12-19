@@ -1,0 +1,481 @@
+
+header {
+    color: $white;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    nav{
+        float: right;
+        text-align: center;
+        margin: 39px 140px;
+        ul{
+            margin: 0;
+            padding: 0;
+            li{
+                margin: 0;
+                padding: 0;
+                float: left;
+            }        
+        }
+    }
+    .whiteheader{
+        height: 120px;
+        background: $white;
+        position: absolute;
+        width: 100%;
+        box-shadow: 0px 5px 5px $lightgrey;
+        transform: translate(0, -125px);       
+        transition: .25s ease-in-out;
+        &.open{
+            transform: translate(0, 0);  
+        }
+    }
+}
+
+footer {
+    background-color: $white;
+    .ey_grey_logo{
+        @include bgImage('ey_grey_logo.png');
+        width: 153px;
+        height: 39px;
+        float: left;
+    }
+    .yammer_ico{
+        @include bgImage('yammer_ico.png');
+        width: 34px;
+        height: 34px;
+        display: inline-block;
+    }
+    .wrap{
+        @include clearfix;
+        padding: 20px;
+    }
+    .yammerwrap{
+        float: right;
+        text-align: right;
+    }
+    .footertext{
+
+    }
+    .lightgreywrap{
+        background: $lightgrey;
+        p{
+            padding: 50px;
+            margin: 0 auto;
+            width: 200px;
+        }
+    }
+}
+
+
+.services {
+    .mainpage{
+        @include bgImage('mainimage_lightgrey.jpg', top center)
+        padding: 0;
+        h1{
+            @extend %h1withline;
+            color: $darkgrey;
+        }
+        p{
+            color: $darkgrey;
+        }
+        .wrap{
+            padding-top: 150px;
+        }
+    }
+    h2{
+        @extend %h1withline;
+        margin-bottom: 40px;
+        &:after{       
+            width: 5px;
+        }
+    }
+    .learning{
+        @include bgImage('brain_bg.png', center -70px);
+        background-color: $lightgraybg;
+        background-attachment: fixed;
+    }
+    .avProduction{
+        @include bgImage('AV_bg.png', center -70px);
+        background-attachment: fixed;
+    }
+    .development{
+        @include bgImage('link_bg.png', center 0px);
+        background-color: $lightgraybg;
+        background-attachment: fixed;
+    }
+    .servisesitems{
+        @include grid(2, 5%)
+        float: left;  
+    }
+}
+.our_work{
+    .element-item {
+        @include clearfix;
+        margin: 1%;
+        float: left;
+        overflow: hidden;
+        width: 48%;
+        img{
+            width: 100%;
+            display: block;
+        }
+        .itemcenterwrap {
+            @extend %centerwrap; 
+            width: 100%;
+            height: 170px;
+        }
+        &:hover {
+            h2{
+                transform: translate(0, 0px);       
+            }
+            h3{
+                transform: translate(0, 0px);       
+            }
+            a{
+                transform: translate(0, 0px);  
+            }
+            .description{
+                background: rgba(0, 0, 0, 0.7);
+            }
+        }
+    }
+    .description{
+        transition: .25s ease-in-out;
+        background: rgba(83, 87, 100, 0.4);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        color: $white;
+        text-align: center;
+        a{
+            transition: .3s ease-in-out; 
+            display: inline-block;
+            padding: 10px 35px;
+            margin-top: 15px;
+            border: none;
+            border: 2px solid $yellow;
+            font-size: 16px;    
+            cursor: pointer;
+            background: none;
+            color: $white;
+            transform: translate(0, 300px); 
+            &:hover {
+                background: $yellow;
+                color: $grey;
+            }
+        }
+        h2{
+            transition: .15s ease-in-out;  
+            transform: translate(0, 50px); 
+            padding: 10px;
+            font-weight: 400;
+            font-size: 1.9em;
+            text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+        }               
+        h3{
+            transition: .25s ease-in-out;
+            padding: 8px;
+            transform: translate(0, 300px); 
+        }
+    }
+    #nav-icon{
+        span{
+            background: $grey;
+        }
+    } 
+    .mainpage{   
+        min-height: 80%;
+        margin-bottom: 50px;
+        .wrap{
+            padding-top: 150px; 
+
+        }
+        .button-group{
+            padding-top: 50px; 
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 18px;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 2px solid $white;            
+            font-size: 16px;    
+            cursor: pointer;
+            background: none;
+        }
+        .button.is-checked {
+            border-bottom: 2px solid $darkgrey;   
+        }
+    }
+    h1{
+        @extend %h1withline;
+    }
+}
+
+
+
+
+
+
+
+
+.about{
+    .mainpage{      
+        @include bgImage('mainimage_lightgrey.jpg', top center)
+        .wrap{
+            padding-top: 150px;         
+        }
+        h1{
+            @extend %h1withline;
+        }
+        h2{
+            @extend %h2withunderline;
+        }
+        p{
+            text-align: center
+        }
+    }
+    .Awards{
+        background-color: $lightgraybg;
+        h1{
+            @extend %h1withline;
+            color: $darkgrey;
+            margin-top: 50px
+        }
+        h2{
+            padding-bottom: 20px;
+        }
+        h3{
+            padding-bottom: 10px;
+        }
+        .awardswrap{
+            padding-top: 50px;
+        }
+        .item{
+            @include grid(3, 5%)
+            text-align: center;
+            float: left;        
+            @include break(1000px){
+                @include grid(3, 5%)
+            }
+            img{
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+.contact{
+    #nav-icon{
+        span{
+            background: $grey;
+        }
+    } 
+    .mainpage{
+
+        padding: 0;
+        h1{
+            @extend %h1withline;
+            color: $darkgrey;
+        }
+        h2{
+            @extend %h2withunderline;
+            padding: 50px 0; 
+            a{
+                color: $darkgrey;
+            }
+        }
+        p{
+            color: $darkgrey;
+            text-align: center;
+        }
+        .wrap{
+            padding-top: 150px;
+        }
+    }  
+}
+
+.homepage{
+    /*    @include bgImage('mainimage.jpg', top center)*/
+    min-height: 100%;
+    padding: 0;
+    .whiteheader{
+        box-shadow: none;
+    }
+    .whatwedo{
+        @include clearfix;
+        @include bgImage('mainimage_grey.jpg', top center)
+        color: $white;
+        background-attachment: fixed;
+        padding-top: 100px;
+        h1{        
+            @extend %h1withline;
+        }
+        h2{
+            @extend %h2withunderline;
+        }
+        p{
+            color: $white;
+            text-align: center;
+        }
+        .grid{
+            @include clearfix;
+            .item{
+                @include grid(1, 5%)
+                text-align: center;
+                float: left;        
+                @include break(1000px){
+                    @include grid(3, 10%)
+                }
+            }
+        }
+
+    }
+}
+
+.product{
+    section{
+        padding: 0;
+    }
+    .elearningwrap{
+        overflow: hidden;
+    }
+    .slideritem{
+        float: left;
+    }
+    .slick-next{
+        top: 600px;
+    }
+    .slick-prev{
+        top: 600px;
+    }
+    .header{
+        height: 570px;
+    }
+    .quickdetails{
+        .item{
+            float: left;  
+            text-align: center;
+            @include grid(3, 10%)
+        }
+    }
+    h1{
+        @extend %h1withline;
+    }
+    h2{
+        font-weight: 400;
+        padding: 20px 0;
+    }
+    .findoutmorewrap{
+        .item{
+            float: left;
+            @include grid(2, 5%);
+            .findoutbut{
+                float: right;
+            }
+            .viewcourse{
+                float: left;
+            }
+        }
+    }
+    .findoutbut{
+        display: inline-block;
+        padding: 20px 40px;
+        margin-top: 15px;
+        border: none;
+        border: 2px solid $yellow;
+        font-size: 16px;    
+        cursor: pointer;
+    }
+    .viewcourse{
+        display: inline-block;
+        padding: 20px 40px;
+        margin-top: 15px;
+        border: none;
+        border: 2px solid $darkgrey;
+        font-size: 16px;    
+        cursor: pointer;
+        background: $lightgrey;
+    }
+    .colorwrap{
+        @include clearfix;
+        text-align: center;
+        padding-bottom: 30px;
+        h3{
+            padding: 20px;
+        }
+    }
+    .colortringle{
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 27.5px 0 27.5px;      
+        display: inline-block;
+    }
+    .quitewrap{
+        text-align: center;
+        .quite{
+            width: 80%;
+            margin: 0 auto;
+            padding: 5% 10%;
+            position: relative;
+            &:before{
+                background-image: url('quote1.png');
+                width: 132px;
+                height: 102px;
+                display: block;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                content: " ";
+                z-index: 100;
+            }
+            &:after{
+                background-image: url('quote2.png');
+                width: 132px;
+                height: 102px;
+                display: block;
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                content: " ";
+                z-index: 100;
+            }
+            .author{
+                color: $yellow;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+
+
+.elearningwrap{
+    .margintop{
+        @include clearfix;
+        position: relative;
+        margin-top: -420px;
+        .productlaptop{
+            background-image: url('productlaptop.png');
+            height: 500px;
+            width: 708px;
+            background-repeat: no-repeat;
+            margin-top: 40px;
+            margin-left: 43px;
+        }
+        .producipad{
+            background-image: url('producipad.png');
+            height: 500px;
+            width: 708px;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 330px;
+            right: -290px;
+        }
+    }
+}

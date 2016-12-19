@@ -331,3 +331,47 @@
         @include bgImage('2_eLearning_EY_Libuary.jpg')
     }
 }
+
+.slick-prev {
+    position: absolute;
+    top: 50px;
+    z-index: 10;
+    left: 50px;
+    background-color: transparent;
+    background-image: url("prev_ico.png");
+    font-size: 0;
+    height: 67px;           
+    width: 67px;
+    border: none;
+    cursor: pointer;
+}
+.slick-next {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 10;
+    border: none;
+    background-color: transparent;
+    background-image: url("next_ico.png");
+    font-size: 0;
+    height: 67px;           
+    width: 67px;
+     cursor: pointer;
+}
+
+.productcategories{
+    position: relative;
+    overflow: hidden;
+    .slick-prev {
+        top: 100px;
+    }
+    .slick-next {
+        top: 100px;
+    }
+    .element-item{
+        float: left;
+        position: relative;
+        margin: 0 !important;
+    }
+    @extend .our_work;
+}
