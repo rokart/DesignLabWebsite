@@ -331,6 +331,26 @@
         @include bgImage('2_eLearning_EY_Libuary.jpg')
     }
 }
+.filming_Learning{
+    .header{
+        @include bgImage('5_filming_Learning-week.jpg')
+    }
+}
+.Oil-and-Gas{
+    .header{
+        @include bgImage('6_Oil-and-Gas.jpg')
+    }
+}
+.CharacterLevel1_basicMobility_big{
+    .header{
+        @include bgImage('9_CharacterLevel1_basicMobility_big.jpg')
+    }
+}
+.CharacterLevel2_FullMobility{
+    .header{
+        @include bgImage('10_CharacterLevel2_FullMobility.jpg')
+    }
+}
 
 .slick-prev {
     position: absolute;
@@ -356,7 +376,7 @@
     font-size: 0;
     height: 67px;           
     width: 67px;
-     cursor: pointer;
+    cursor: pointer;
 }
 
 .productcategories{

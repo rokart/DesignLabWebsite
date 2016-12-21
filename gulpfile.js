@@ -114,14 +114,14 @@ gulp.task('styles', function () {
                 outputStyle: 'compressed'
             }))
             .pipe(autoprefixer('last 3 versions'))
-            .pipe(sourcemaps.write())
-            .pipe(cssimport({}))
-            .pipe(rename('style.css'))
             .pipe(inline_base64({
                 baseDir: "dist/assets/css/",
                 maxSize: 14 * 1024,
                 debug: true
             }))
+            .pipe(sourcemaps.write())
+            .pipe(cssimport({}))
+            .pipe(rename('style.css'))
             .pipe(gulp.dest(routes.styles.css))
             .pipe(browserSync.stream())
             .pipe(notify({

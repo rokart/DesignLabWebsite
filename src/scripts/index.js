@@ -203,7 +203,7 @@ $('.button-group').each(function (i, buttonGroup) {
 
 var integer = window.location.hash.match(/\d+/) | 0;
 
-$('.elearningwrap').slick({
+$('.productswrap').slick({
     dots: false,
     infinite: true,
     speed: 300,
@@ -221,7 +221,7 @@ $('.productcategories').slick({
 
 
 setTimeout(function () { 
-    $('.elearningwrap').slick('slickGoTo', integer, true);
+    $('.productswrap').slick('slickGoTo', integer, true);
 }, 1000);
 
 //var style = {

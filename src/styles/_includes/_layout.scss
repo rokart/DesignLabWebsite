@@ -341,7 +341,7 @@ footer {
     section{
         padding: 0;
     }
-    .elearningwrap{
+    .productswrap{
         overflow: hidden;
     }
     .slideritem{
@@ -358,13 +358,18 @@ footer {
     }
     .quickdetails{
         .item{
+
             float: left;  
             text-align: center;
-            @include grid(3, 10%)
+            margin-bottom: 40px;
+            @include grid(3, 5%);
         }
     }
     h1{
         @extend %h1withline;
+        font-size: 2.5em;
+        font-weight: 400;
+
     }
     h2{
         font-weight: 400;
@@ -451,11 +456,6 @@ footer {
             }
         }
     }
-}
-
-
-
-.elearningwrap{
     .margintop{
         @include clearfix;
         position: relative;
@@ -477,5 +477,18 @@ footer {
             top: 330px;
             right: -290px;
         }
+        .producipad_big{
+            background-image: url('producipad_big.png');
+            height: 421px;
+            width: 566px;
+            background-repeat: no-repeat;
+            margin: 50px auto;
+        }
     }
+}
+
+
+
+.elearningwrap{
+
 }
