@@ -84,7 +84,7 @@
     cursor: pointer;
     background: none;
     color: $white;
-    transform: translate(0, 300px); 
+    /*    transform: translate(0, 300px); */
     &:hover {
         background: $yellow;
         color: $grey;
@@ -222,6 +222,7 @@
         @include grid(4, 5%);
         display: inline-block;
         text-align: center;
+        margin-bottom: 5%;
     }
 }
 #map {
@@ -254,9 +255,9 @@
     @extend .gear;
     @include bgImage('brain.png')
 }
-.brain{
+.link{
     @extend .gear;
-    @include bgImage('brain.png')
+    @include bgImage('link.png')
 }
 .camera{
     @extend .gear;
@@ -351,6 +352,43 @@
         @include bgImage('10_CharacterLevel2_FullMobility.jpg')
     }
 }
+.Infographics_BEPS{
+    .header{
+        @include bgImage('11_Infographics_BEPS.jpg')
+    }
+}
+.HandSketched_Talent{
+    .header{
+        @include bgImage('12_HandSketched_Talent.jpg')
+    }
+}
+.VILT_GAL_big{
+    .header{
+        @include bgImage('15_VILT_GAL_big.jpg')
+    }
+}
+.Games_GAL-Game{
+    .header{
+        @include bgImage('17_Games_GAL-Game.jpg')
+    }
+}
+.AdvisoryLearningJ{
+    .header{
+        @include bgImage('19_AdvisoryLearningJ.jpg')
+    }
+}
+.Apps_GoldDay{
+    .header{
+        @include bgImage('20_Apps_GoldDay.jpg')
+    }
+}
+.Academy_GAL_big{
+    .header{
+        @include bgImage('23_Academy_GAL_big.jpg')
+    }
+}
+
+
 
 .slick-prev {
     position: absolute;
@@ -394,4 +432,74 @@
         margin: 0 !important;
     }
     @extend .our_work;
+}
+
+.playbut{
+    cursor: pointer;
+}
+.videomainwrap {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999999;
+}
+.videowrap {
+    margin: -300px 0 0 15%;
+    position: relative;
+    width: 70%;
+    z-index: 1;
+}
+.activeflash .videowrap {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+.videowrap video{
+    width: 100%;
+}
+.lightbox {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+.vidclose {
+    background-image: url("close.png");
+    cursor: pointer;
+    height: 70px;
+    position: absolute;
+    right: -35px;
+    top: -35px;
+    width: 70px;
+}
+
+.slick-dots {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.slick-dots li {
+    cursor: pointer;
+    display: inline-block;
+    background-color: $darkgrey;
+    height: 20px;
+    margin-left: 20px;
+    width: 20px;
+    border: 2px solid $darkgrey;
+}
+.slick-dots li button {
+    display: none;
+}
+.slick-dots li.slick-active {
+    background-color: $yellow;
+    border: 2px solid $darkgrey;
 }

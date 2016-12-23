@@ -1,23 +1,5 @@
 //'use strict';
 
-//var $ = require('jQuery');
-//window.jQuery = require("jquery");
-//require("jquery-ui-browserify");
-////require("easing-js");
-
-
-
-//var ScrollMagic = require('scrollmagic');
-//var controller = new ScrollMagic.Controller();
-//
-//var scene = new ScrollMagic.Scene({
-//    triggerElement: "#trigger1"
-//})
-//        .setTween("header h1", 0.5, {
-//            backgroundColor: "green"
-//        })
-//
-//        .addTo(controller);
 
 
 class animateMenu {
@@ -218,9 +200,16 @@ $('.productcategories').slick({
     slidesToShow: 4,
     autoplay: true,
 });
+$('.servisesslider').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    autoplay: false,
+    arrows: false
+});
 
-
-setTimeout(function () { 
+setTimeout(function () {
     $('.productswrap').slick('slickGoTo', integer, true);
 }, 1000);
 
@@ -228,3 +217,42 @@ setTimeout(function () {
 //    boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
 //    transform: `translate3d(0, ${y}px, 0) scale(${scale})`
 //};
+
+var videoimg = $(".playbut");
+var lightbox = $(".lightbox, .vidclose");
+var videomainwrap = $(".videomainwrap");
+var slidevideo = $('.videowrap');
+
+var obj = {
+    doIt: function () {
+        var videowrap = $(this).find(videomainwrap);
+        var light = $(this).find(lightbox);
+        var videoplay = $(this).find("video").get(0);
+        if (slidevideo.is(':animated')) {
+        } else {
+            slidevideo.animate({'margin-top': 100}, 600, "easeOutBack");
+            videowrap.show();
+            light.fadeIn(800);
+            videoplay.play();
+        }
+    }
+};
+videoimg.click(function () {
+    var myvar = $(this).parents('.playvid');
+    obj.doIt.call(myvar);
+});
+//close video popup
+lightbox.click(function () {
+    videomainwrap.fadeOut(700);
+    lightbox.fadeOut(700);
+    slidevideo.animate({'margin-top': -300}, 600, "easeInBack");
+    myVideostop();
+});
+
+function myVideostop() {
+    setTimeout(function () {
+        $("video").each(function () {
+            this.pause();
+        });
+    }, 100);
+}

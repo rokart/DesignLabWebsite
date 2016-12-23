@@ -105,10 +105,87 @@ footer {
         background-color: $lightgraybg;
         background-attachment: fixed;
     }
-    .servisesitems{
-        @include grid(2, 5%)
+    .servisesitemsleft{
         float: left;  
+        width: 43%;
+        margin-right: 2%;
     }
+    .servisesitemsright{
+        float: left;
+        width: 55%;
+    }
+    .avProduction{
+        .servisesitemsleft{
+            float: left;  
+            width: 50%;
+            margin-right: 2%;
+        }
+        .servisesitemsright{
+            float: left;
+            width: 48%;
+        }
+    }
+    .servisesslider{
+        margin-top: 60px;
+        margin-bottom: 60px;
+
+        .item{
+            position: relative;
+            float: left;
+            height: 370px;
+        }
+        .slick-list{
+            overflow: hidden;
+        }
+    }
+    .laptopsmall{        
+        background-image: url('laptopsmall.png');
+        background-repeat: no-repeat;
+        width: 521px;
+        height: 299px;
+        position:relative;
+        .innerwindow{
+            width: 392px;
+            height: 240px;
+            position: absolute;
+            top: 18px;
+            left: 64px;
+            overflow: hidden;
+        }
+    }
+    .tabletsmall{
+        @include bgImage('tabletsmall.png'); 
+        width: 162px;
+        height: 285px;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        .innerwindow{
+            width: 142px;
+            height: 252px;
+            position: absolute;
+            top: 14px;
+            left: 10px;
+            overflow: hidden;
+        }
+    }
+    .servicesipad{
+        @include bgImage('servicesipad.png'); 
+        width: 500px;
+        height: 283px;
+        .innerwindow{
+            width: 444px;
+            height: 251px;
+            position: absolute;
+            top: 16px;
+            left: 32px;
+            overflow: hidden;
+            video{
+                width: 100%;
+            }
+        }
+    }
+
 }
 .our_work{
     .element-item {
@@ -218,11 +295,6 @@ footer {
 
 
 
-
-
-
-
-
 .about{
     .mainpage{      
         @include bgImage('mainimage_lightgrey.jpg', top center)
@@ -306,6 +378,15 @@ footer {
     .whiteheader{
         box-shadow: none;
     }
+    .wrap{
+
+        .center{
+            text-align: center;
+            .btn2{
+                margin-bottom: 50px;
+            }
+        } 
+    }
     .whatwedo{
         @include clearfix;
         @include bgImage('mainimage_grey.jpg', top center)
@@ -330,6 +411,7 @@ footer {
                 float: left;        
                 @include break(1000px){
                     @include grid(3, 10%)
+                    margin-bottom: 50px;
                 }
             }
         }
@@ -358,7 +440,6 @@ footer {
     }
     .quickdetails{
         .item{
-
             float: left;  
             text-align: center;
             margin-bottom: 40px;
@@ -378,6 +459,7 @@ footer {
     .findoutmorewrap{
         .item{
             float: left;
+            margin-bottom: 50px;
             @include grid(2, 5%);
             .findoutbut{
                 float: right;

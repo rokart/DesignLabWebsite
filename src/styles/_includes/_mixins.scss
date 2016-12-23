@@ -18,11 +18,11 @@
     width: ((100% - (($columns - 1) * $margin))/$columns);
     &:nth-child(n){
         margin-right: $margin;
-        margin-bottom: $margin;
+/*        margin-bottom: $margin;*/
     }
     &:nth-child(#{$columns}n){
         margin-right: 0;
-        margin-bottom: $margin;
+/*        margin-bottom: $margin;*/
     }
 }
 @mixin clearfix {
