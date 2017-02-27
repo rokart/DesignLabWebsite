@@ -25,7 +25,7 @@ header {
         position: absolute;
         width: 100%;
         box-shadow: 0px 5px 5px $lightgrey;
-        transform: translate(0, -125px);       
+        transform: translate(0, -125px); 
         transition: .25s ease-in-out;
         &.open{
             transform: translate(0, 0);  
@@ -47,14 +47,30 @@ footer {
         height: 34px;
         display: inline-block;
     }
-    .wrap{
+    .wrapp{
         @include clearfix;
+
         padding: 20px;
+        .item{
+            @include grid(3, 0);
+            float: left;
+        }
+        .footertext{
+            text-align: right;
+        }
+        .fiftypersent{
+            @include grid(2, 0);
+            float: left;
+        }
     }
     .yammerwrap{
         float: right;
         text-align: right;
     } 
+    .pad{
+        position: relative;
+        top: -10px;
+    }
     a{
         color: $grey;
         &:hover{
@@ -82,9 +98,18 @@ footer {
         }
         p{
             color: $darkgrey;
+            padding-bottom: 50px;
+            text-align: center;
         }
         .wrap{
             padding-top: 150px;
+        }
+        a{
+            color: $grey;
+            text-decoration: underline;
+            &:hover{
+                color: $yellow;
+            }
         }
     }
     h2{
@@ -110,22 +135,22 @@ footer {
     }
     .servisesitemsleft{
         float: left;  
-        width: 43%;
+        width: 47%;
         margin-right: 2%;
     }
     .servisesitemsright{
         float: left;
-        width: 55%;
+        width: 51%;
     }
     .avProduction{
         .servisesitemsleft{
             float: left;  
-            width: 50%;
+            width: 49%;
             margin-right: 2%;
         }
         .servisesitemsright{
             float: left;
-            width: 48%;
+            width: 49%;
         }
     }
     .servisesslider{
@@ -157,6 +182,7 @@ footer {
         }
         video{
             width: 101%;
+            height: 101%;
         }
     }
     .tabletsmall{
@@ -187,14 +213,14 @@ footer {
             left: 32px;
             overflow: hidden;
             video{
-                width: 100%;
+                width: 101%;
+                height: 101%;
             }
         }
     }
 
 }
 .our_work{
-
     .element-item {
         @include clearfix;
         margin: 1%;
@@ -283,7 +309,7 @@ footer {
             padding-top: 50px; 
             text-align: center;
         }
-        .button {
+        .filterbutton {
             display: inline-block;
             padding: 10px 18px;
             margin-bottom: 15px;
@@ -293,8 +319,29 @@ footer {
             cursor: pointer;
             background: none;
         }
-        .button.is-checked {
+        .filterbutton.is-checked {
             border-bottom: 2px solid $darkgrey;   
+        }
+
+        .newdesign{
+            transition: .3s ease-in-out; 
+            display: inline-block;
+            padding: 10px 35px;
+            margin-top: 15px;
+            border: none;
+            border: 2px solid $yellow;
+            font-size: 16px;    
+            cursor: pointer;
+            background: none;
+
+            &:hover {
+                background: $yellow;
+                color: $grey;
+            }
+        }
+        .newdesign.is-checked {
+            background: $yellow; 
+            border: 2px solid $yellow;
         }
     }
     h1{
@@ -305,6 +352,18 @@ footer {
 
 
 .about{
+    .tooltip{
+        position: absolute;
+        z-index: 100000;
+        width: 300px;
+        background-color: $yellow;
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .ui-helper-hidden-accessible{
+        display: none;
+    }
     .mainpage{      
         @include bgImage('mainimage_lightgrey.jpg', top center)
         .wrap{
@@ -343,8 +402,18 @@ footer {
             @include break(1000px){
                 @include grid(3, 5%)
             }
+
+            .imagewrap{
+                height: 280px;
+                position:relative;
+            }            
             img{
-                padding-bottom: 20px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                left: 0;
+                right: 0;
             }
         }
     }
@@ -368,6 +437,10 @@ footer {
             padding: 50px 0; 
             a{
                 color: $darkgrey;
+                transition: .25s ease-in-out;
+                &:hover{
+                    color: $yellow;
+                }
             }
         }
         p{
@@ -383,6 +456,13 @@ footer {
 .homepage{
     /*    @include bgImage('mainimage.jpg', top center)*/
     min-height: 100%;
+    /*    overflow: hidden;*/
+    .homepagevidwrap{
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+    }
     padding: 0;
     .whiteheader{
         box-shadow: none;
@@ -390,6 +470,7 @@ footer {
     .wrap{
 
         .center{
+            @include clearfix;
             text-align: center;
             .btn2{
                 margin-bottom: 50px;
@@ -429,10 +510,14 @@ footer {
 }
 
 .product{
+
     section{
         padding: 0;
     }
     .productswrap{
+        overflow: hidden;
+    }
+    .productsAudiowrap{
         overflow: hidden;
     }
     .slideritem{
@@ -448,12 +533,28 @@ footer {
         height: 570px;
     }
     .quickdetails{
+        a{
+            color: $grey;
+            text-decoration: underline;
+            &:hover{
+                color: $yellow;
+            }
+        }
         .item{
             float: left;  
             text-align: center;
             margin-bottom: 40px;
-            @include grid(3, 5%);
+            @include grid(3, 5%); 
         }
+        ul{
+            list-style-type: square;
+            margin: 18px 18px 18px 88px;
+            li{
+                margin-top: 0.25em;
+                text-align: left;
+            }
+        }
+
     }
     h1{
         @extend %h1withline;
@@ -466,16 +567,19 @@ footer {
         padding: 20px 0;
     }
     .findoutmorewrap{
+        text-align: center;
+        margin-bottom: 50px;
+
         .item{
             float: left;
-            margin-bottom: 50px;
+
             @include grid(2, 5%);
-            .findoutbut{
-                float: right;
-            }
-            .viewcourse{
-                float: left;
-            }
+            /*            .findoutbut{
+                            float: right;
+                        }
+                        .viewcourse{
+                            float: left;
+                        }*/
         }
     }
     .findoutbut{
@@ -486,6 +590,17 @@ footer {
         border: 2px solid $yellow;
         font-size: 16px;    
         cursor: pointer;
+        transition: .25s ease-in-out;
+        &:hover{
+            background: $yellow;
+
+        }
+        a{
+            color: $grey;
+            &:visited{
+                color: $grey;
+            }
+        }
     }
     .viewcourse{
         display: inline-block;
@@ -573,6 +688,30 @@ footer {
                 }
             }
         }
+        .producphone{
+            background-image: url('mobile_phone_vertical.png');
+            height: 446px;
+            width: 250px;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 200px;
+            right: 140px;
+            .innerwindow{
+                width: 223px;
+                height: 397px;
+                position: absolute;
+                top: 22px;
+                left: 14px;
+                overflow: hidden;
+                background-position: center top;              
+                transition: all 2s;
+                &:hover{
+                    background-position: center bottom;                
+                    transition: all 4s ;
+
+                }
+            }
+        }
         .productlaptopone{
             @extend .productlaptop;          
             margin: 40px auto 0;
@@ -589,18 +728,18 @@ footer {
         }
         .producipad_big{
             background-image: url('producipad_big.png');
-            height: 421px;
-            width: 566px;
+            height: 392px;
+            width: 700px;
             background-repeat: no-repeat;
             position: relative;
             margin: 50px auto;
 
             .innerwindow{
-                width: 481px;
-                height: 373px;
+                width: 623px;
+                height: 349px;
                 position: absolute;
-                top: 24px;
-                left: 37px;
+                top: 22px;
+                left: 44px;
                 overflow: hidden;
                 video{
                     width: 100%;

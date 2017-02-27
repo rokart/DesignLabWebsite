@@ -1,7 +1,11 @@
 //'use strict';
 
+jQuery(document).ready(function ($) {
+    new animateMenu();
+});
+$(window).on("load scroll resize", function () {
 
-
+});
 class animateMenu {
     constructor(options) {
         this.options = $.extend({}, animateMenu.defaults, options);
@@ -21,18 +25,21 @@ class animateMenu {
         this.window.on("load resize", () => {
             this.pageheight = this.window.height();
             this.animatepage.call(this);
-            this.scaleVideo.call(this);
+//            this.scaleVideo.call(this);
         });
     }
     scaleVideo() {
-        var $video = $('#full-video'),
-                $videoWrapper = $video.parent();
-        var isWider = ($video.width() > $videoWrapper.width()) ? true : false,
-                isTaller = ($video.height() > this.pageheight) ? true : false,
-                widthDifference = $video.width() - $videoWrapper.width(),
-                heightDifference = $video.height() - $videoWrapper.height();
-        (isWider) ? $video.css('left', -parseInt(widthDifference / 2)) : $video.css('left', '0');
-        (isTaller) ? $video.css('top', -parseInt(heightDifference / 2)) : $video.css('top', '0');
+
+//        var $video = $('#full-video'),
+//                $videoWrapper = $video.parent();
+//        var isWider = ($video.width() > $videoWrapper.width()) ? true : false,
+//                isTaller = ($video.height() > this.pageheight) ? true : false,
+//                
+//                widthDifference = $video.width() - $videoWrapper.width(),
+//                heightDifference = $video.height() - $videoWrapper.height();
+//        
+//        (isWider) ? $video.css('left', -parseInt(widthDifference / 2)) : $video.css('left', '0');
+//        (isTaller) ? $video.css('top', -parseInt(heightDifference / 2)) : $video.css('top', '0');
     }
     click() {
         this.navIcon.on('click', () => {
@@ -99,7 +106,6 @@ animateMenu.defaults = {
     navIcon: '#nav-icon',
     arrow: '.white_down_arrow'
 };
-new animateMenu();
 function getPageScroll() {
     var yScroll;
     if (document.documentElement && document.documentElement.scrollTop) {
@@ -114,64 +120,87 @@ function getPageScroll() {
 (function loop() {
     $('.white_down_arrow').delay(500).fadeTo(1000, 0.2).fadeTo(1000, 1, loop);
 })();
-
 class person {
     constructor(options) {
-        this.wrap = options.wrap;
-        this.items = this.wrap.find('.teamitem');
-
+        this.wrap = $(options);
+        this.items = this.wrap.find('.bubble');
+        this.window = $(window);
+        this.curentitem;
+        this.loadresize.call(this);
         this.click.call(this);
     }
-    animate() {
-        this.items.each(function () {
-            console.log(this)
+
+    loadresize() {
+        this.window.on("load resize scroll", () => {
+
         });
     }
     click() {
-        this.items.on('click', function () {
-            var tl = new TimelineLite();
-            var windowwidth = $(window).width() / 2;
-            var windowheight = $(window).height() / 2;
-            var itemleftpos = $(this).offset();
+        this.items.on('click', (event) => {
+            this.curentitem = $(event.currentTarget);
+            this.animate();
+            $(event.currentTarget).toggleClass('active');
+        });
+    }
+    animate() {
+        let tl = new TimelineLite();
+        let windowwidth = this.window.width() / 2;
+        let windowheight = this.window.height() / 2;
+        let itempos = this.curentitem.offset();
 
-            var left = windowwidth - (itemleftpos.left) - 87.5;
-            var right = windowheight - itemleftpos.top - 87.5 + getPageScroll();
-            var item = $(this);
+        let left = windowwidth - (itempos.left) - 87.5;
+        let top = (this.curentitem.hasClass('active')) ? 0 : windowheight - itempos.top - 87.5 + getPageScroll();
 
-            tl.from(item, 0.4, {autoAlpha: 0, ease: Back.easeOut})
-                    .set(item, {css: {zIndex: 100}})
-                    .to(item, 0.4, {x: left, y: right, ease: Back.easeInOut, onComplete: togleclass})
-                    .set(item, {className: "+=show-details"})
-                    .to(item.find('.hiddenbubble'), 0.6, {scale: 20, ease: Back.easeOut})
+        tl.from(this.curentitem, 0.4, {autoAlpha: 0, ease: Back.easeOut})
+                .set(this.curentitem, {css: {zIndex: 100}})
+                .to(this.curentitem, 0.4, {x: left, y: top, ease: Back.easeInOut, onComplete: togleclass})
+                //.set(this.curentitem, {className: "+=show-details"})
+
+                .to(this.wrap.find('.hiddenbubble'), 0.6, {scale: 20, ease: Back.easeOut})
 
 //            TweenMax.staggerTo($(this), 2, {scale: 1.1, delay: 0.1, ease: Elastic.easeOut, force3D: true}, 0.2);
 
-            function togleclass() {
+        function togleclass() {
+            $('.hiddenbubble').toggleClass()
 //                item.toggleClass('show-details');              
-            }
-
-        });
-
+        }
     }
 }
-
+new person(".team");
 // init Isotope
 var $grid = $('.grid').isotope({
     itemSelector: '.element-item',
     layoutMode: 'fitRows'
 });
-
-
 // layout Isotope after each image loads
 $grid.imagesLoaded().progress(function () {
     $grid.isotope('layout');
 });
+//// bind filter button click
+//$('.filterbutton').on('click', function () {
+//    var filterValue = $(this).attr('data-filter');
+//    $grid.isotope({filter: filterValue});
+//});
 
-// bind filter button click
-$('.filters-button-group').on('click', 'button', function () {
-    var filterValue = $(this).attr('data-filter');
+
+
+var filters = {};
+$('.filters').on('click', 'button', function () {
+    var $this = $(this);
+    var $buttonGroup = $this.parents('.button-group');
+    var filterGroup = $buttonGroup.attr('data-filter-group');
+    filters[ filterGroup ] = $this.attr('data-filter');
+    var filterValue = concatValues(filters);
     $grid.isotope({filter: filterValue});
 });
+function concatValues(obj) {
+    var value = '';
+    for (var prop in obj) {
+        value += obj[ prop ];
+    }
+    return value;
+}
+
 
 // change is-checked class on buttons
 $('.button-group').each(function (i, buttonGroup) {
@@ -181,25 +210,47 @@ $('.button-group').each(function (i, buttonGroup) {
         $(this).addClass('is-checked');
     });
 });
-
-
 var integer = window.location.hash.match(/\d+/) | 0;
 
-$('.productswrap').slick({
+
+$('.productsAudiowrap').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    var curentslide = $(this).find('.slideritem').eq(currentSlide);
+    curentslide.find("video").each(function () {
+        this.pause();
+    });
+    console.log(curentslide);
+});
+$('.servisesslider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    $(this).find("video").each(function () {
+        this.pause();
+    });
+});
+$('.productsAudiowrap').slick({
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 300,
     slidesToShow: 1,
     adaptiveHeight: true,
     lazyLoad: 'ondemand'
 });
+
+$('.productswrap').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    lazyLoad: 'ondemand'
+});
+
 $('.productcategories').slick({
     dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 4,
-    autoplay: true,
+    autoplay: true
 });
+
 $('.servisesslider').slick({
     dots: true,
     infinite: true,
@@ -208,11 +259,9 @@ $('.servisesslider').slick({
     autoplay: false,
     arrows: false
 });
-
 setTimeout(function () {
     $('.productswrap').slick('slickGoTo', integer, true);
 }, 1000);
-
 //var style = {
 //    boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
 //    transform: `translate3d(0, ${y}px, 0) scale(${scale})`
@@ -222,7 +271,6 @@ var videoimg = $(".playbut");
 var lightbox = $(".lightbox, .vidclose");
 var videomainwrap = $(".videomainwrap");
 var slidevideo = $('.videowrap');
-
 var obj = {
     doIt: function () {
         var videowrap = $(this).find(videomainwrap);
@@ -248,7 +296,6 @@ lightbox.click(function () {
     slidevideo.animate({'margin-top': -300}, 600, "easeInBack");
     myVideostop();
 });
-
 function myVideostop() {
     setTimeout(function () {
         $("video").each(function () {
@@ -256,3 +303,14 @@ function myVideostop() {
         });
     }, 100);
 }
+
+
+$(function () {
+    $(document).tooltip();
+
+});
+
+$('.teamitem').tooltip({
+    tooltipClass: "tooltip",
+    track: true
+});
