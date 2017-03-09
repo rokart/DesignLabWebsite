@@ -87,7 +87,6 @@ footer {
     }
 }
 
-
 .services {
     .mainpage{
         @include bgImage('mainimage_lightgrey.jpg', top center)
@@ -154,7 +153,7 @@ footer {
         }
     }
     .servisesslider{
-        margin-top: 60px;
+        margin-top: 70px;
         margin-bottom: 60px;
 
         .item{
@@ -216,6 +215,78 @@ footer {
                 width: 101%;
                 height: 101%;
             }
+        }
+    }
+
+}
+
+.resources{
+    @extend .services;
+    .resourcesleft{
+        float: left;  
+        width: 47%;
+        margin-right: 2%;
+    }
+    .resourcesitemsright{
+        float: left;
+        width: 51%;
+    }
+    .mainpage{
+        background: none;
+    }
+
+    .documents{
+        @include bgImage('brain_bg.png', center -70px);
+        background-color: $lightgraybg;
+        background-attachment: fixed;
+    }
+    .animation{
+        @include bgImage('AV_bg.png', center -70px);
+        background-attachment: fixed;
+    }
+    .audio{
+        @include bgImage('link_bg.png', center 0px);
+        background-color: $lightgraybg;
+        background-attachment: fixed;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        margin: 25px auto;
+        border-collapse: collapse;
+        border: 1px solid #eee;
+        border-bottom: 2px solid #ccc;
+        box-shadow: 0px 10px 10px $lightgrey;
+
+        tr {
+
+            &:hover {
+                background: #f4f4f4;
+
+                td {
+                    color: #555;
+                }
+            }
+        }
+        th, td {
+            width: 100%;
+            color: #999;
+            border: 1px solid #eee;
+            padding: 12px 20px;
+            border-collapse: collapse;
+        }
+        th {
+            background: #ccc;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 12px;
+            &.last {
+                border-right: none;
+            }
+        }
+        audio{
+            width: 300px;
         }
     }
 
@@ -349,8 +420,6 @@ footer {
     }
 }
 
-
-
 .about{
     .tooltip{
         position: absolute;
@@ -384,23 +453,22 @@ footer {
         h1{
             @extend %h1withline;
             color: $darkgrey;
-            margin-top: 50px
+            margin-top: 50px;
         }
         h2{
             padding-bottom: 20px;
         }
-        h3{
+        h3{ 
             padding-bottom: 10px;
         }
         .awardswrap{
             padding-top: 50px;
         }
         .item{
-            @include grid(3, 5%)
             text-align: center;
             float: left;        
             @include break(1000px){
-                @include grid(3, 5%)
+                @include grid(2, 5%)
             }
 
             .imagewrap{
@@ -750,8 +818,3 @@ footer {
     }
 }
 
-
-
-.elearningwrap{
-
-}

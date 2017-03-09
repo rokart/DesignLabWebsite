@@ -2,7 +2,7 @@
 <body class="product">
     @@include('./header.html')
     <main>
-        <section class="productswrap">
+        <section class="productsAudiowrap">
 
             <div class="slideritem Games_GAL-Game">
                 <div class="header"></div>
@@ -11,10 +11,11 @@
                         <h1>Games //<br /> <span class="smallfont">Thinking One Step Ahead</span></h1>
                         <div class="productlaptopone">
                             <div class="innerwindow">
-                                <video controls preload>
-                                    <source src="GALGame.mp4" type="video/mp4">
-                                    fallback image 
-                                </video>
+                                <!--                                <video controls preload>
+                                                                    <source src="GALGame.mp4" type="video/mp4">
+                                                                    fallback image 
+                                                                </video>-->
+                                <video poster="css/game1.jpg" controls="" preload="" onclick="this.play()"><source src="GALGame.mp4" type="video/mp4">fallback image</video>
                             </div>
                         </div>
                         <div class="quickdetails">
@@ -44,7 +45,7 @@
                                 </ul>               
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div style="background: #8dc3df" class="colorwrap">

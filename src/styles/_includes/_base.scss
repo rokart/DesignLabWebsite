@@ -14,13 +14,15 @@ b{
     font-weight: 600;
 }
 header,footer {
-    text-align: center;
+    text-align: center; 
 }
 
 .buttons {
     margin: .85em;
 }
-
+button:focus{
+    outline: none;
+}
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     margin: 0;

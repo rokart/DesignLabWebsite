@@ -2,7 +2,7 @@
 <body class="product">
     @@include('./header.html')
     <main>
-        <section class="productswrap">
+        <section class="productsAudiowrap">
 
             <div class="slideritem VILT_GAL_big">
                 <div class="header"></div>
@@ -11,10 +11,12 @@
                         <h1>VILT //<br /> <span class="smallfont">GAL Project Management</span></h1>
                         <div class="productlaptopone">
                             <div class="innerwindow">
-                                <video loop autoplay preload>
-                                    <source src="GALprojectmanagement.mp4" type="video/mp4">
-                                    fallback image 
-                                </video>
+                                <!--                                <video loop autoplay preload>
+                                                                    <source src="GALprojectmanagement.mp4" type="video/mp4">
+                                                                    fallback image 
+                                                                </video>-->
+
+                                <video poster="css/vilt1.jpg" controls="" preload="" onclick="this.play()"><source src="GALprojectmanagement.mp4" type="video/mp4">fallback image</video>
                             </div>
                         </div>
                         <div class="quickdetails">
@@ -40,7 +42,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div style="background: #F6E7E2" class="colorwrap">
@@ -62,8 +64,8 @@
                 </div>
 
             </div>
-            
-            
+
+
 
         </section>
         @@include('./catslider.html')
